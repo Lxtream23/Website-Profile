@@ -8,6 +8,7 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
@@ -28,18 +29,15 @@
             <i class="fa-solid fa-user"></i>
             MyProfile
           </h2>
-          <!-- <li><a href="index.html"><h2>
-            <i class="fa-solid fa-user"></i>
-            MyProfile
-          </h2></a></li> -->
         </div>
 
         <ul class="menu">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#chart">Chart</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#video">Video</a></li>
-          <li><a href="#chart">Chart</a></li>
           <li><a href="crud.html">CRUD</a></li>
         </ul>
       </nav>
@@ -49,7 +47,11 @@
 
     <section id="home" class="hero">
       <div class="hero-text" data-aos="fade-right">
-        <h1>Halo, Saya</h1>
+        <h1>
+          Halo,
+          <i class="fa-solid fa-hand"></i>
+          Saya
+        </h1>
 
         <h2>Lukman Hakim</h2>
 
@@ -68,36 +70,44 @@
     <section id="about" class="about" data-aos="fade-up">
       <h2>Tentang Saya</h2>
 
-      <p>Saya merupakan mahasiswa yang memiliki minat pada pengembangan website menggunakan HTML, CSS dan JavaScript. Saya menyukai tampilan website yang modern, minimalis, sederhana, namun tetap elegan.</p>
+      <p>Saya merupakan mahasiswa yang memiliki minat dalam pengembangan website menggunakan HTML, CSS, dan JavaScript. Saya menyukai tampilan website yang modern, minimalis, sederhana namun tetap elegan.</p>
     </section>
 
     <!-- ================= DASHBOARD ================= -->
 
-    <section class="dashboard" data-aos="zoom-in">
-      <h2>Dashboard</h2>
+    <section id="dashboard" class="dashboard">
+      <h2 data-aos="fade-up">Dashboard</h2>
 
       <div class="card-container">
-        <div class="card">
+        <div class="card" data-aos="flip-left" data-aos-delay="100">
           <i class="fa-solid fa-folder-open"></i>
+
           <h3 id="totalProject">0</h3>
+
           <p>Total Project</p>
         </div>
 
-        <div class="card">
+        <div class="card" data-aos="flip-left" data-aos-delay="200">
           <i class="fa-solid fa-globe"></i>
+
           <h3 id="websiteProject">0</h3>
+
           <p>Website</p>
         </div>
 
-        <div class="card">
+        <div class="card" data-aos="flip-left" data-aos-delay="300">
           <i class="fa-solid fa-mobile-screen-button"></i>
+
           <h3 id="mobileProject">0</h3>
+
           <p>Mobile</p>
         </div>
 
-        <div class="card">
+        <div class="card" data-aos="flip-left" data-aos-delay="400">
           <i class="fa-solid fa-palette"></i>
+
           <h3 id="uiuxProject">0</h3>
+
           <p>UI / UX</p>
         </div>
       </div>
@@ -119,28 +129,11 @@
       <h2>Gallery</h2>
 
       <div class="gallery-container">
+        <img src="img/profile.jpg" alt="Gallery 1" data-aos="zoom-in" data-aos-delay="100" />
 
-        <img
-            src="img/profile.jpg"
-            data-aos="zoom-in"
-            data-aos-delay="100">
+        <img src="img/profile.jpg" alt="Gallery 2" data-aos="zoom-in" data-aos-delay="250" />
 
-        <img
-            src="img/profile.jpg"
-            data-aos="zoom-in"
-            data-aos-delay="300">
-
-        <img
-            src="img/profile.jpg"
-            data-aos="zoom-in"
-            data-aos-delay="500">
-
-        </div>
-        <img src="img/profile.jpg" alt="Gallery 1" />
-
-        <img src="img/profile.jpg" alt="Gallery 2" />
-
-        <img src="img/profile.jpg" alt="Gallery 3" />
+        <img src="img/profile.jpg" alt="Gallery 3" data-aos="zoom-in" data-aos-delay="400" />
       </div>
     </section>
 
@@ -151,6 +144,7 @@
 
       <video controls>
         <source src="video/profile.mp4" type="video/mp4" />
+
         Browser Anda tidak mendukung video.
       </video>
     </section>
@@ -163,19 +157,27 @@
 
     <!-- ================= JAVASCRIPT ================= -->
 
-    <!-- Chart.js Library -->
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Script -->
+    <!-- Chart -->
     <script src="js/chart.js"></script>
+
+    <!-- App -->
     <script src="js/app.js"></script>
-    <!-- AOS JS -->
+
+    <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <script>
       AOS.init({
         duration: 1000,
+
         once: true,
+
+        offset: 120,
+
+        easing: "ease-in-out",
       });
     </script>
   </body>
