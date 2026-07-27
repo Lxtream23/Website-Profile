@@ -1,28 +1,52 @@
-// Fade in halaman
-window.onload = function () {
-  document.body.style.opacity = "1";
+// =====================================
+// APP.JS
+// Dashboard Website Profile
+// =====================================
 
+// Jalankan setelah halaman selesai dimuat
+document.addEventListener("DOMContentLoaded", () => {
   loadDashboard();
-};
+});
 
-// ==========================
+// =====================================
 // Dashboard
-// ==========================
+// =====================================
 
 function loadDashboard() {
-  let projects = JSON.parse(localStorage.getItem("projects")) || [];
+  // Ambil data dari LocalStorage
+  const projects = JSON.parse(localStorage.getItem("projects")) || [];
 
-  document.getElementById("totalProject").innerText = projects.length;
+  // Cari elemen dashboard
+  const totalProject = document.getElementById("totalProject");
+  const websiteProject = document.getElementById("websiteProject");
+  const mobileProject = document.getElementById("mobileProject");
+  const desktopProject = document.getElementById("desktopProject");
+  const uiuxProject = document.getElementById("uiuxProject");
 
-  let website = projects.filter((p) => p.kategori === "Website").length;
+  // Jika bukan halaman Home, hentikan fungsi
+  if (!totalProject) return;
 
-  let mobile = projects.filter((p) => p.kategori === "Mobile").length;
+  // Hitung data
+  const total = projects.length;
 
-  let uiux = projects.filter((p) => p.kategori === "UI/UX").length;
+  const website = projects.filter((project) => project.kategori === "Website").length;
 
-  document.getElementById("websiteProject").innerText = website;
+  const mobile = projects.filter((project) => project.kategori === "Mobile").length;
 
-  document.getElementById("mobileProject").innerText = mobile;
+  const desktop = projects.filter((project) => project.kategori === "Desktop").length;
 
-  document.getElementById("uiuxProject").innerText = uiux;
+  const uiux = projects.filter((project) => project.kategori === "UI/UX").length;
+
+  // Tampilkan ke Dashboard
+  totalProject.textContent = total;
+
+  websiteProject.textContent = website;
+
+  mobileProject.textContent = mobile;
+
+  if (desktopProject) {
+    desktopProject.textContent = desktop;
+  }
+
+  uiuxProject.textContent = uiux;
 }

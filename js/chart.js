@@ -1,23 +1,35 @@
-const canvas = document.getElementById("myChart");
+// ================================
+// Chart Project Berdasarkan CRUD
+// ================================
 
-if (canvas) {
-  const ctx = canvas.getContext("2d");
+// Ambil data dari LocalStorage
+const projects = JSON.parse(localStorage.getItem("projects")) || [];
 
+// Hitung jumlah setiap kategori
+const website = projects.filter((p) => p.kategori === "Website").length;
+const mobile = projects.filter((p) => p.kategori === "Mobile").length;
+const desktop = projects.filter((p) => p.kategori === "Desktop").length;
+const uiux = projects.filter((p) => p.kategori === "UI/UX").length;
+
+// Ambil canvas
+const ctx = document.getElementById("myChart");
+
+if (ctx) {
   new Chart(ctx, {
     type: "bar",
 
     data: {
-      labels: ["HTML", "CSS", "JavaScript", "Bootstrap", "UI/UX"],
+      labels: ["Website", "Mobile", "Desktop", "UI / UX"],
 
       datasets: [
         {
-          label: "Skill (%)",
+          label: "Jumlah Project",
 
-          data: [95, 90, 85, 80, 75],
+          data: [website, mobile, desktop, uiux],
 
-          backgroundColor: ["#1E3A5F", "#4F7CAC", "#7DA0CA", "#A7C5EB", "#D6E4F0"],
+          backgroundColor: ["#1E3A5F", "#4F7CAC", "#7DA0CA", "#A7C5EB"],
 
-          borderRadius: 10,
+          borderRadius: 12,
         },
       ],
     },
@@ -37,7 +49,9 @@ if (canvas) {
         y: {
           beginAtZero: true,
 
-          max: 100,
+          ticks: {
+            stepSize: 1,
+          },
         },
       },
     },
