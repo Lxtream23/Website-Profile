@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CRUD Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <h2>MyProfile</h2>
+        </div>
+
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+
+          <li><a href="crud.html">CRUD</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="crud-container">
+      <h1>Portfolio Management</h1>
+
+      <form id="projectForm">
+        <input type="text" id="nama" placeholder="Nama Project" required />
+
+        <select id="kategori">
+          <option>Website</option>
+
+          <option>Mobile</option>
+
+          <option>Desktop</option>
+
+          <option>UI/UX</option>
+        </select>
+
+        <input type="number" id="tahun" placeholder="Tahun" required />
+
+        <select id="status">
+          <option>Selesai</option>
+
+          <option>Proses</option>
+
+          <option>Pending</option>
+        </select>
+
+        <button type="submit">Simpan Project</button>
+      </form>
+
+      <input type="text" id="search" placeholder="Cari Project..." />
+
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+
+            <th>Nama</th>
+
+            <th>Kategori</th>
+
+            <th>Tahun</th>
+
+            <th>Status</th>
+
+            <th>Aksi</th>
+          </tr>
+        </thead>
+
+        <tbody id="tableBody"></tbody>
+      </table>
+    </section>
+
+    <script src="js/crud.js"></script>
+  </body>
+</html>
