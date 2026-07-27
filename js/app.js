@@ -1,52 +1,79 @@
 // =====================================
 // APP.JS
-// Dashboard Website Profile
 // =====================================
 
-// Jalankan setelah halaman selesai dimuat
 document.addEventListener("DOMContentLoaded", () => {
   loadDashboard();
+
+  initTheme();
 });
 
 // =====================================
-// Dashboard
+// DASHBOARD
 // =====================================
 
 function loadDashboard() {
-  // Ambil data dari LocalStorage
   const projects = JSON.parse(localStorage.getItem("projects")) || [];
 
-  // Cari elemen dashboard
   const totalProject = document.getElementById("totalProject");
+
   const websiteProject = document.getElementById("websiteProject");
+
   const mobileProject = document.getElementById("mobileProject");
+
   const desktopProject = document.getElementById("desktopProject");
+
   const uiuxProject = document.getElementById("uiuxProject");
 
-  // Jika bukan halaman Home, hentikan fungsi
+  // Jika bukan halaman index, cukup keluar
   if (!totalProject) return;
 
-  // Hitung data
-  const total = projects.length;
+  totalProject.textContent = projects.length;
 
-  const website = projects.filter((project) => project.kategori === "Website").length;
+  websiteProject.textContent = projects.filter((p) => p.kategori === "Website").length;
 
-  const mobile = projects.filter((project) => project.kategori === "Mobile").length;
-
-  const desktop = projects.filter((project) => project.kategori === "Desktop").length;
-
-  const uiux = projects.filter((project) => project.kategori === "UI/UX").length;
-
-  // Tampilkan ke Dashboard
-  totalProject.textContent = total;
-
-  websiteProject.textContent = website;
-
-  mobileProject.textContent = mobile;
+  mobileProject.textContent = projects.filter((p) => p.kategori === "Mobile").length;
 
   if (desktopProject) {
-    desktopProject.textContent = desktop;
+    desktopProject.textContent = projects.filter((p) => p.kategori === "Desktop").length;
   }
 
-  uiuxProject.textContent = uiux;
+  uiuxProject.textContent = projects.filter((p) => p.kategori === "UI/UX").length;
+}
+
+// =====================================
+// DARK MODE
+// =====================================
+
+function initTheme() {
+  const themeButton = document.getElementById("themeToggle");
+
+  // Jika halaman tidak memiliki tombol theme
+  if (!themeButton) return;
+
+  // Cek tema tersimpan
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+
+    themeButton.innerHTML = '<i class="fa-solid fa-sun"></i>';
+  } else {
+    themeButton.innerHTML = '<i class="fa-solid fa-moon"></i>';
+  }
+
+  // Klik tombol
+  themeButton.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+
+      themeButton.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    } else {
+      localStorage.setItem("theme", "light");
+
+      themeButton.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    }
+  });
 }
