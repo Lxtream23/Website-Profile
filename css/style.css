@@ -158,6 +158,64 @@ section h2 {
 }
 
 /* ===========================
+   DASHBOARD
+=========================== */
+
+.dashboard {
+  background: #ffffff;
+}
+
+.card-container {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 25px;
+}
+
+.card {
+  background: #ffffff;
+
+  padding: 35px;
+
+  text-align: center;
+
+  border-radius: 18px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card h3 {
+  font-size: 42px;
+
+  color: #1e3a5f;
+}
+
+.card p {
+  margin-top: 10px;
+
+  color: #666;
+}
+
+@media (max-width: 900px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===========================
    ABOUT
 =========================== */
 
@@ -460,4 +518,9 @@ table tr:hover {
     display: block;
     overflow-x: auto;
   }
+}
+.card i {
+  font-size: 45px;
+  color: #1e3a5f;
+  margin-bottom: 15px;
 }

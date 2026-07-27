@@ -42,15 +42,13 @@ function renderTable(data = projects) {
             <td>
 
                 <button class="edit" onclick="editProject(${index})">
-
-                    Edit
-
+                <i class="fa-solid fa-pen"></i>
+                  Edit
                 </button>
 
                 <button class="delete" onclick="deleteProject(${index})">
-
-                    Hapus
-
+                <i class="fa-solid fa-trash"></i>
+                  Hapus
                 </button>
 
             </td>
