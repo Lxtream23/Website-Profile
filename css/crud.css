@@ -221,3 +221,46 @@ table tbody tr:hover {
   background: var(--primary);
   color: white;
 }
+
+/*==========================
+ACTION BUTTON
+==========================*/
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.action-buttons button {
+  border: none;
+
+  padding: 12px 18px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  color: white;
+
+  font-size: 15px;
+
+  transition: var(--transition);
+}
+
+.pdf-btn {
+  background: #dc3545;
+}
+
+.pdf-btn:hover {
+  background: #b52a37;
+}
+
+.excel-btn {
+  background: #198754;
+}
+
+.excel-btn:hover {
+  background: #157347;
+}
