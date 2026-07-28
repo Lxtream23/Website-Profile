@@ -1,0 +1,75 @@
+/* ===================================
+   DASHBOARD
+=================================== */
+
+.dashboard {
+  background: var(--background);
+}
+
+/* ========= CARD CONTAINER ========= */
+
+.card-container {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 25px;
+
+  margin-top: 40px;
+}
+
+/* ========= CARD ========= */
+
+.card {
+  background: var(--surface);
+
+  padding: 35px 25px;
+
+  text-align: center;
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow);
+
+  transition: var(--transition);
+
+  cursor: default;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+
+  box-shadow: var(--shadow-lg);
+}
+
+/* ========= ICON ========= */
+
+.card i {
+  font-size: 40px;
+
+  color: var(--secondary);
+
+  margin-bottom: 20px;
+}
+
+/* ========= NUMBER ========= */
+
+.card h3 {
+  font-size: var(--fs-title);
+
+  color: var(--primary);
+
+  margin-bottom: 10px;
+
+  font-weight: 700;
+}
+
+/* ========= DESCRIPTION ========= */
+
+.card p {
+  color: var(--text-light);
+
+  font-size: var(--fs-md);
+
+  line-height: 1.6;
+}

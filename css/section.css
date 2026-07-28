@@ -1,0 +1,149 @@
+/* ===================================
+   SECTION
+=================================== */
+
+section {
+  padding: 90px 8%;
+}
+
+section h2 {
+  text-align: center;
+
+  margin-bottom: 40px;
+
+  color: var(--primary);
+
+  font-size: var(--fs-title);
+
+  font-weight: 700;
+}
+
+/* ===================================
+   ABOUT
+=================================== */
+
+.about {
+  text-align: center;
+}
+
+.about p {
+  max-width: 850px;
+
+  margin: auto;
+
+  color: var(--text-light);
+
+  font-size: var(--fs-lg);
+
+  line-height: 1.8;
+}
+
+/* ===================================
+   GALLERY
+=================================== */
+
+.gallery-container {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+.gallery-container img {
+  width: 100%;
+
+  border-radius: var(--radius-lg);
+
+  cursor: pointer;
+
+  object-fit: cover;
+
+  transition: var(--transition);
+
+  box-shadow: var(--shadow);
+}
+
+.gallery-container img:hover {
+  transform: scale(1.05);
+
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===================================
+   VIDEO
+=================================== */
+
+.video {
+  text-align: center;
+}
+
+.video video {
+  width: 80%;
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow);
+
+  transition: var(--transition);
+}
+
+.video video:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===================================
+   CHART
+=================================== */
+
+.chart {
+  background: var(--surface);
+
+  text-align: center;
+}
+
+.chart-container {
+  width: 100%;
+
+  max-width: 850px;
+
+  height: 420px;
+
+  margin: 40px auto;
+
+  padding: 20px;
+
+  background: var(--surface);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow);
+}
+
+.chart canvas {
+  width: 100% !important;
+
+  height: 100% !important;
+}
+
+/* ===================================
+   FOOTER
+=================================== */
+
+footer {
+  background: var(--primary);
+
+  color: var(--white);
+
+  text-align: center;
+
+  padding: 30px 20px;
+
+  margin-top: 50px;
+}
+
+footer p {
+  font-size: var(--fs-sm);
+
+  opacity: 0.9;
+}

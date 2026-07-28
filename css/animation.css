@@ -1,0 +1,105 @@
+/* ===================================
+   GLOBAL ANIMATION
+=================================== */
+
+* {
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* ===================================
+   FADE
+=================================== */
+
+.fade-in {
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   FLOATING IMAGE
+=================================== */
+
+.hero-image img {
+  animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   CARD HOVER
+=================================== */
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* ===================================
+   IMAGE HOVER
+=================================== */
+
+.gallery-container img:hover {
+  transform: scale(1.05);
+}
+
+/* ===================================
+   BUTTON
+=================================== */
+
+.btn:hover,
+.edit:hover,
+.delete:hover {
+  transform: translateY(-3px);
+}
+
+/* ===================================
+   TABLE ROW
+=================================== */
+
+table tbody tr {
+  transition: var(--transition);
+}
+
+table tbody tr:hover {
+  transform: scale(1.01);
+}
+
+/* ===================================
+   ICON
+=================================== */
+
+.card i {
+  transition: var(--transition);
+}
+
+.card:hover i {
+  transform: rotate(10deg) scale(1.15);
+}

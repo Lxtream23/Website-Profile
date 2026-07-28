@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Website Profile | Lukman Hakim</title>
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon-32x32.png" type="image/png" />
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -12,6 +14,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
+    <!-- CSS -->
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
 
@@ -61,7 +64,7 @@
       <div class="hero-text" data-aos="fade-right">
         <h1>
           Halo,
-          <i class="fa-solid fa-hand"></i>
+          <!-- <i class="fa-solid fa-hand"></i> -->
           Saya
         </h1>
 
@@ -69,7 +72,10 @@
 
         <p>Front-End Developer | UI Designer | Web Programmer</p>
 
-        <a href="#about" class="btn"> Tentang Saya </a>
+        <a href="#about" class="btn">
+          <i class="fa-solid fa-user"></i>
+          Tentang Saya
+        </a>
       </div>
 
       <div class="hero-image" data-aos="fade-left">
@@ -139,11 +145,13 @@
       <h2>Gallery</h2>
 
       <div class="gallery-container">
-        <img src="img/profile.jpg" alt="Gallery 1" data-aos="zoom-in" data-aos-delay="100" />
+        <img src="img/gambar1.jpg" alt="Gallery 1" data-aos="zoom-in" data-aos-delay="100" />
 
-        <img src="img/profile.jpg" alt="Gallery 2" data-aos="zoom-in" data-aos-delay="250" />
+        <img src="img/gambar2.jpg" alt="Gallery 2" data-aos="zoom-in" data-aos-delay="250" />
 
-        <img src="img/profile.jpg" alt="Gallery 3" data-aos="zoom-in" data-aos-delay="400" />
+        <img src="img/gambar3.jpg" alt="Gallery 3" data-aos="zoom-in" data-aos-delay="400" />
+
+        <!-- <img src="img/gambar4.jpg" alt="Gallery 4" data-aos="zoom-in" data-aos-delay="550" /> -->
       </div>
     </section>
 
@@ -152,7 +160,7 @@
     <section id="video" class="video" data-aos="fade-left">
       <h2>Video Profile</h2>
 
-      <video controls>
+      <video controls preload="metadata">
         <source src="video/profile.mp4" type="video/mp4" />
 
         Browser Anda tidak mendukung video.
@@ -163,18 +171,28 @@
 
     <footer>
       <p>© 2026 Lukman Hakim | Website Profile</p>
+
+      <p>
+        Built with
+
+        <i class="fa-brands fa-html5"></i>
+
+        <i class="fa-brands fa-css3-alt"></i>
+
+        <i class="fa-brands fa-js"></i>
+      </p>
     </footer>
 
     <!-- ================= JAVASCRIPT ================= -->
 
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Chart -->
-    <script src="js/chart.js"></script>
+    <script defer src="js/chart.js"></script>
 
     <!-- App -->
-    <script src="js/app.js"></script>
+    <script defer src="js/app.js"></script>
 
     <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>

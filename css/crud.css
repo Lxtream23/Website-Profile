@@ -1,0 +1,191 @@
+/* ===================================
+   CRUD PAGE
+=================================== */
+
+.crud-container {
+  width: 90%;
+  max-width: 1200px;
+
+  margin: 120px auto 60px;
+}
+
+.crud-container h1 {
+  text-align: center;
+
+  margin-bottom: 35px;
+
+  color: var(--primary);
+
+  font-size: var(--fs-title);
+
+  font-weight: 700;
+}
+
+/* ===================================
+   FORM
+=================================== */
+
+#projectForm {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+
+  padding: 30px;
+
+  background: var(--surface);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow);
+
+  margin-bottom: 30px;
+}
+
+#projectForm input,
+#projectForm select {
+  padding: 14px;
+
+  background: var(--surface);
+
+  color: var(--text);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-md);
+
+  font-size: var(--fs-md);
+
+  outline: none;
+
+  transition: var(--transition);
+}
+
+#projectForm input:focus,
+#projectForm select:focus {
+  border-color: var(--secondary);
+
+  box-shadow: 0 0 0 3px rgba(79, 124, 172, 0.15);
+}
+
+#projectForm button {
+  grid-column: span 2;
+}
+
+/* ===================================
+   SEARCH
+=================================== */
+
+#search {
+  width: 100%;
+
+  margin-bottom: 25px;
+
+  padding: 14px;
+
+  background: var(--surface);
+
+  color: var(--text);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-md);
+
+  outline: none;
+
+  transition: var(--transition);
+}
+
+#search:focus {
+  border-color: var(--secondary);
+}
+
+/* ===================================
+   TABLE
+=================================== */
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  overflow: hidden;
+
+  background: var(--surface);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow);
+}
+
+table th {
+  padding: 16px;
+
+  background: var(--primary);
+
+  color: var(--white);
+
+  font-size: var(--fs-md);
+
+  font-weight: 600;
+}
+
+table td {
+  padding: 15px;
+
+  color: var(--text);
+
+  text-align: center;
+
+  border-bottom: 1px solid var(--border);
+}
+
+table tbody tr {
+  transition: var(--transition);
+}
+
+table tbody tr:hover {
+  background: rgba(79, 124, 172, 0.08);
+}
+
+/* ===================================
+   ACTION BUTTON
+=================================== */
+
+.edit,
+.delete {
+  border: none;
+
+  border-radius: var(--radius-sm);
+
+  padding: 9px 14px;
+
+  color: var(--white);
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.edit {
+  background: var(--secondary);
+
+  margin-right: 5px;
+}
+
+.edit:hover {
+  transform: translateY(-2px);
+
+  opacity: 0.9;
+}
+
+.delete {
+  background: #dc3545;
+}
+
+.delete:hover {
+  transform: translateY(-2px);
+
+  opacity: 0.9;
+}

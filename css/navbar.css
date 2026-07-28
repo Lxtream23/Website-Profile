@@ -1,0 +1,93 @@
+/* ===================================
+   NAVBAR
+=================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 8%;
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow-sm);
+
+  z-index: 999;
+
+  transition: var(--transition);
+}
+
+/* ========= LOGO ========= */
+
+.logo h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--primary);
+
+  font-size: var(--fs-xl);
+
+  font-weight: 600;
+}
+
+.logo i {
+  color: var(--secondary);
+}
+
+/* ========= MENU ========= */
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.menu a {
+  color: var(--text);
+
+  font-weight: 500;
+
+  transition: var(--transition);
+}
+
+.menu a:hover {
+  color: var(--secondary);
+}
+
+/* ========= ACTIVE MENU ========= */
+
+.menu a.active {
+  color: var(--primary);
+
+  font-weight: 600;
+}
+
+/* ========= THEME BUTTON ========= */
+
+#themeToggle {
+  background: none;
+
+  border: none;
+
+  color: var(--primary);
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+#themeToggle:hover {
+  color: var(--secondary);
+
+  transform: rotate(20deg);
+}
