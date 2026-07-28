@@ -1,140 +1,136 @@
-// ============================
-// CRUD Portfolio
-// ============================
+// =====================================
+// CRUD.JS
+// Portfolio Management
+// =====================================
+
+// =====================================
+// ELEMENT
+// =====================================
 
 const form = document.getElementById("projectForm");
 const tableBody = document.getElementById("tableBody");
 const search = document.getElementById("search");
 
-let projects = JSON.parse(localStorage.getItem("projects")) || [];
+let projects = getProjects();
 let editIndex = -1;
 
-// ============================
-// SIMPAN DATA
-// ============================
-
-function saveData() {
-  localStorage.setItem("projects", JSON.stringify(projects));
-}
-
-// ============================
-// TAMPILKAN DATA
-// ============================
+// =====================================
+// RENDER TABLE
+// =====================================
 
 function renderTable(data = projects) {
   tableBody.innerHTML = "";
 
   data.forEach((project, index) => {
     tableBody.innerHTML += `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${project.nama}</td>
+        <td>${project.kategori}</td>
+        <td>${project.tahun}</td>
+        <td>${project.status}</td>
+        <td>
+          <button class="edit" onclick="editProject(${index})">
+            <i class="fa-solid fa-pen"></i>
+            Edit
+          </button>
 
-        <tr>
-
-            <td>${index + 1}</td>
-
-            <td>${project.nama}</td>
-
-            <td>${project.kategori}</td>
-
-            <td>${project.tahun}</td>
-
-            <td>${project.status}</td>
-
-            <td>
-
-                <button class="edit" onclick="editProject(${index})">
-                <i class="fa-solid fa-pen"></i>
-                  Edit
-                </button>
-
-                <button class="delete" onclick="deleteProject(${index})">
-                <i class="fa-solid fa-trash"></i>
-                  Hapus
-                </button>
-
-            </td>
-
-        </tr>
-
-        `;
+          <button class="delete" onclick="deleteProject(${index})">
+            <i class="fa-solid fa-trash"></i>
+            Hapus
+          </button>
+        </td>
+      </tr>
+    `;
   });
 }
 
-// ============================
-// TAMBAH / UPDATE
-// ============================
+// =====================================
+// SUBMIT FORM
+// =====================================
 
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const project = {
-    nama: document.getElementById("nama").value,
-
+    nama: document.getElementById("nama").value.trim(),
     kategori: document.getElementById("kategori").value,
-
     tahun: document.getElementById("tahun").value,
-
     status: document.getElementById("status").value,
   };
 
+  // Tambah Data
   if (editIndex === -1) {
     projects.push(project);
-  } else {
+
+    showToast("✅ Project berhasil ditambahkan", "success");
+  }
+
+  // Update Data
+  else {
     projects[editIndex] = project;
 
     editIndex = -1;
+
+    showToast("✏️ Project berhasil diperbarui", "success");
   }
 
-  saveData();
+  saveProjects(projects);
 
   renderTable();
 
   form.reset();
 });
 
-// ============================
-// EDIT
-// ============================
+// =====================================
+// EDIT PROJECT
+// =====================================
 
 function editProject(index) {
   editIndex = index;
 
-  document.getElementById("nama").value = projects[index].nama;
+  const project = projects[index];
 
-  document.getElementById("kategori").value = projects[index].kategori;
-
-  document.getElementById("tahun").value = projects[index].tahun;
-
-  document.getElementById("status").value = projects[index].status;
+  document.getElementById("nama").value = project.nama;
+  document.getElementById("kategori").value = project.kategori;
+  document.getElementById("tahun").value = project.tahun;
+  document.getElementById("status").value = project.status;
 }
 
-// ============================
-// DELETE
-// ============================
+// =====================================
+// DELETE PROJECT
+// =====================================
 
 function deleteProject(index) {
-  if (confirm("Yakin ingin menghapus project ini?")) {
-    projects.splice(index, 1);
+  const confirmDelete = confirm("Yakin ingin menghapus project ini?");
 
-    saveData();
+  if (!confirmDelete) return;
 
-    renderTable();
-  }
+  projects.splice(index, 1);
+
+  saveProjects(projects);
+
+  renderTable();
+
+  showToast("🗑️ Project berhasil dihapus", "error");
 }
 
-// ============================
+// =====================================
 // SEARCH
-// ============================
+// =====================================
 
-search.addEventListener("keyup", function () {
-  const keyword = this.value.toLowerCase();
+search.addEventListener("keyup", () => {
+  const keyword = search.value.toLowerCase();
 
-  const hasil = projects.filter((project) => project.nama.toLowerCase().includes(keyword) || project.kategori.toLowerCase().includes(keyword) || project.status.toLowerCase().includes(keyword));
+  const result = projects.filter((project) => {
+    return project.nama.toLowerCase().includes(keyword) || project.kategori.toLowerCase().includes(keyword) || project.status.toLowerCase().includes(keyword);
+  });
 
-  renderTable(hasil);
+  renderTable(result);
 });
 
-// ============================
-// LOAD
-// ============================
+// =====================================
+// INITIALIZE
+// =====================================
 
 renderTable();

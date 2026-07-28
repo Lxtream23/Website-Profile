@@ -3,7 +3,7 @@
 // ================================
 
 // Ambil data dari LocalStorage
-const projects = JSON.parse(localStorage.getItem("projects")) || [];
+const projects = getProjects();
 
 // Hitung jumlah setiap kategori
 const website = projects.filter((p) => p.kategori === "Website").length;
