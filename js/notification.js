@@ -1,28 +1,42 @@
 // =====================================
 // NOTIFICATION.JS
-// Toast Notification
+// SweetAlert2 Helper
 // =====================================
 
-function showToast(message, type = "success") {
-  const toast = document.createElement("div");
+// Success
+function showSuccess(message) {
+  Swal.fire({
+    icon: "success",
+    title: "Berhasil",
+    text: message,
+    timer: 1800,
+    showConfirmButton: false,
+  });
+}
 
-  toast.className = `toast ${type}`;
+// Error
+function showError(message) {
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: message,
+  });
+}
 
-  toast.innerHTML = `
-        <span>${message}</span>
-    `;
-
-  document.body.appendChild(toast);
-
-  setTimeout(() => {
-    toast.classList.add("show");
-  }, 100);
-
-  setTimeout(() => {
-    toast.classList.remove("show");
-
-    setTimeout(() => {
-      toast.remove();
-    }, 300);
-  }, 2500);
+// Confirm Delete
+function confirmDelete(callback) {
+  Swal.fire({
+    title: "Hapus Project?",
+    text: "Data yang dihapus tidak dapat dikembalikan.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#1E3A5F",
+    cancelButtonColor: "#dc3545",
+    confirmButtonText: "Ya, Hapus",
+    cancelButtonText: "Batal",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      callback();
+    }
+  });
 }

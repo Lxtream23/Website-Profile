@@ -13,8 +13,8 @@ const search = document.getElementById("search");
 
 let projects = getProjects();
 let editIndex = -1;
-const rowsPerPage = 5;
 
+const rowsPerPage = 5;
 let currentPage = 1;
 
 // =====================================
@@ -25,7 +25,6 @@ function renderTable(data = projects) {
   tableBody.innerHTML = "";
 
   const start = (currentPage - 1) * rowsPerPage;
-
   const end = start + rowsPerPage;
 
   const pageData = data.slice(start, end);
@@ -34,36 +33,38 @@ function renderTable(data = projects) {
     const realIndex = start + index;
 
     tableBody.innerHTML += `
-            <tr>
-                <td>${realIndex + 1}</td>
+      <tr>
+        <td>${realIndex + 1}</td>
 
-                <td>${project.nama}</td>
+        <td>${project.nama}</td>
 
-                <td>${project.kategori}</td>
+        <td>${project.kategori}</td>
 
-                <td>${project.tahun}</td>
+        <td>${project.tahun}</td>
 
-                <td>${project.status}</td>
+        <td>${project.status}</td>
 
-                <td>
-                    <button class="edit"
-                        onclick="editProject(${realIndex})">
-                        <i class="fa-solid fa-pen"></i>
-                        Edit
-                    </button>
+        <td>
+          <button class="edit" onclick="editProject(${realIndex})">
+            <i class="fa-solid fa-pen"></i>
+            Edit
+          </button>
 
-                    <button class="delete"
-                        onclick="deleteProject(${realIndex})">
-                        <i class="fa-solid fa-trash"></i>
-                        Hapus
-                    </button>
-                </td>
-            </tr>
-        `;
+          <button class="delete" onclick="deleteProject(${realIndex})">
+            <i class="fa-solid fa-trash"></i>
+            Hapus
+          </button>
+        </td>
+      </tr>
+    `;
   });
 
   renderPagination(data.length);
 }
+
+// =====================================
+// PAGINATION
+// =====================================
 
 function renderPagination(totalData) {
   const pagination = document.getElementById("pagination");
@@ -72,34 +73,40 @@ function renderPagination(totalData) {
 
   const totalPages = Math.ceil(totalData / rowsPerPage);
 
+  if (totalPages <= 1) return;
+
   // Previous
   if (currentPage > 1) {
-    pagination.innerHTML += `<button onclick="changePage(${currentPage - 1})">
-            Previous
-        </button>`;
+    pagination.innerHTML += `
+      <button onclick="changePage(${currentPage - 1})">
+        Previous
+      </button>
+    `;
   }
 
+  // Number
   for (let i = 1; i <= totalPages; i++) {
     pagination.innerHTML += `
-        <button
-            class="${currentPage === i ? "active" : ""}"
-            onclick="changePage(${i})">
-            ${i}
-        </button>
-        `;
+      <button
+        class="${currentPage === i ? "active" : ""}"
+        onclick="changePage(${i})">
+        ${i}
+      </button>
+    `;
   }
 
   // Next
   if (currentPage < totalPages) {
-    pagination.innerHTML += `<button onclick="changePage(${currentPage + 1})">
-            Next
-        </button>`;
+    pagination.innerHTML += `
+      <button onclick="changePage(${currentPage + 1})">
+        Next
+      </button>
+    `;
   }
 }
 
 function changePage(page) {
   currentPage = page;
-
   renderTable();
 }
 
@@ -110,30 +117,37 @@ function changePage(page) {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  const nama = document.getElementById("nama").value.trim();
+
+  if (nama === "") {
+    showError("Nama project tidak boleh kosong.");
+    return;
+  }
+
   const project = {
-    nama: document.getElementById("nama").value.trim(),
+    nama,
     kategori: document.getElementById("kategori").value,
     tahun: document.getElementById("tahun").value,
     status: document.getElementById("status").value,
   };
 
-  // Tambah Data
+  // Tambah
   if (editIndex === -1) {
     projects.push(project);
-
-    showToast("✅ Project berhasil ditambahkan", "success");
+    showSuccess("Project berhasil ditambahkan.");
   }
 
-  // Update Data
+  // Update
   else {
     projects[editIndex] = project;
-
     editIndex = -1;
-
-    showToast("✏️ Project berhasil diperbarui", "success");
+    showSuccess("Project berhasil diperbarui.");
   }
 
   saveProjects(projects);
+
+  projects = getProjects();
+
   currentPage = 1;
 
   renderTable();
@@ -142,7 +156,7 @@ form.addEventListener("submit", (e) => {
 });
 
 // =====================================
-// EDIT PROJECT
+// EDIT
 // =====================================
 
 function editProject(index) {
@@ -154,24 +168,33 @@ function editProject(index) {
   document.getElementById("kategori").value = project.kategori;
   document.getElementById("tahun").value = project.tahun;
   document.getElementById("status").value = project.status;
+
+  document.getElementById("nama").focus();
 }
 
 // =====================================
-// DELETE PROJECT
+// DELETE
 // =====================================
 
 function deleteProject(index) {
-  const confirmDelete = confirm("Yakin ingin menghapus project ini?");
+  confirmDelete(() => {
+    projects.splice(index, 1);
 
-  if (!confirmDelete) return;
+    saveProjects(projects);
 
-  projects.splice(index, 1);
+    projects = getProjects();
 
-  saveProjects(projects);
+    // Jika halaman terakhir kosong setelah delete
+    const totalPages = Math.ceil(projects.length / rowsPerPage);
 
-  renderTable();
+    if (currentPage > totalPages && totalPages > 0) {
+      currentPage = totalPages;
+    }
 
-  showToast("🗑️ Project berhasil dihapus", "error");
+    renderTable();
+
+    showSuccess("Project berhasil dihapus.");
+  });
 }
 
 // =====================================
