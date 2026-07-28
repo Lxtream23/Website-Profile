@@ -189,3 +189,35 @@ table tbody tr:hover {
 
   opacity: 0.9;
 }
+
+/* ==========================
+   PAGINATION
+========================== */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.pagination button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pagination button:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.pagination button.active {
+  background: var(--primary);
+  color: white;
+}

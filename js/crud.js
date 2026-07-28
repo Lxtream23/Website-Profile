@@ -13,6 +13,9 @@ const search = document.getElementById("search");
 
 let projects = getProjects();
 let editIndex = -1;
+const rowsPerPage = 5;
+
+let currentPage = 1;
 
 // =====================================
 // RENDER TABLE
@@ -21,28 +24,83 @@ let editIndex = -1;
 function renderTable(data = projects) {
   tableBody.innerHTML = "";
 
-  data.forEach((project, index) => {
-    tableBody.innerHTML += `
-      <tr>
-        <td>${index + 1}</td>
-        <td>${project.nama}</td>
-        <td>${project.kategori}</td>
-        <td>${project.tahun}</td>
-        <td>${project.status}</td>
-        <td>
-          <button class="edit" onclick="editProject(${index})">
-            <i class="fa-solid fa-pen"></i>
-            Edit
-          </button>
+  const start = (currentPage - 1) * rowsPerPage;
 
-          <button class="delete" onclick="deleteProject(${index})">
-            <i class="fa-solid fa-trash"></i>
-            Hapus
-          </button>
-        </td>
-      </tr>
-    `;
+  const end = start + rowsPerPage;
+
+  const pageData = data.slice(start, end);
+
+  pageData.forEach((project, index) => {
+    const realIndex = start + index;
+
+    tableBody.innerHTML += `
+            <tr>
+                <td>${realIndex + 1}</td>
+
+                <td>${project.nama}</td>
+
+                <td>${project.kategori}</td>
+
+                <td>${project.tahun}</td>
+
+                <td>${project.status}</td>
+
+                <td>
+                    <button class="edit"
+                        onclick="editProject(${realIndex})">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </button>
+
+                    <button class="delete"
+                        onclick="deleteProject(${realIndex})">
+                        <i class="fa-solid fa-trash"></i>
+                        Hapus
+                    </button>
+                </td>
+            </tr>
+        `;
   });
+
+  renderPagination(data.length);
+}
+
+function renderPagination(totalData) {
+  const pagination = document.getElementById("pagination");
+
+  pagination.innerHTML = "";
+
+  const totalPages = Math.ceil(totalData / rowsPerPage);
+
+  // Previous
+  if (currentPage > 1) {
+    pagination.innerHTML += `<button onclick="changePage(${currentPage - 1})">
+            Previous
+        </button>`;
+  }
+
+  for (let i = 1; i <= totalPages; i++) {
+    pagination.innerHTML += `
+        <button
+            class="${currentPage === i ? "active" : ""}"
+            onclick="changePage(${i})">
+            ${i}
+        </button>
+        `;
+  }
+
+  // Next
+  if (currentPage < totalPages) {
+    pagination.innerHTML += `<button onclick="changePage(${currentPage + 1})">
+            Next
+        </button>`;
+  }
+}
+
+function changePage(page) {
+  currentPage = page;
+
+  renderTable();
 }
 
 // =====================================
@@ -76,6 +134,7 @@ form.addEventListener("submit", (e) => {
   }
 
   saveProjects(projects);
+  currentPage = 1;
 
   renderTable();
 
@@ -125,6 +184,8 @@ search.addEventListener("keyup", () => {
   const result = projects.filter((project) => {
     return project.nama.toLowerCase().includes(keyword) || project.kategori.toLowerCase().includes(keyword) || project.status.toLowerCase().includes(keyword);
   });
+
+  currentPage = 1;
 
   renderTable(result);
 });
