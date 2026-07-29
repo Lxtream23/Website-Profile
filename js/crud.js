@@ -18,6 +18,41 @@ const rowsPerPage = 5;
 let currentPage = 1;
 
 // =====================================
+// STATUS BADGE
+// =====================================
+
+function getStatusBadge(status) {
+  switch (status) {
+    case "Selesai":
+      return `
+      <span class="badge success">
+        <i class="fa-solid fa-circle-check"></i>
+        ${status}
+      </span>
+      `;
+
+    case "Proses":
+      return `
+      <span class="badge warning">
+        <i class="fa-solid fa-spinner"></i>
+        ${status}
+      </span>
+      `;
+
+    case "Pending":
+      return `
+      <span class="badge danger">
+        <i class="fa-solid fa-clock"></i>
+        ${status}
+      </span>
+      `;
+
+    default:
+      return status;
+  }
+}
+
+// =====================================
 // RENDER TABLE
 // =====================================
 
@@ -42,7 +77,7 @@ function renderTable(data = projects) {
 
         <td>${project.tahun}</td>
 
-        <td>${project.status}</td>
+        <td>${getStatusBadge(project.status)}</td>
 
         <td>
           <button class="edit" onclick="editProject(${realIndex})">

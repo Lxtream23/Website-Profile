@@ -413,3 +413,40 @@ table tbody tr:hover {
     overflow-x: auto;
   }
 }
+
+/* ==========================================
+   STATUS BADGE
+========================================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  min-width: 100px;
+
+  padding: 7px 14px;
+
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #fff;
+}
+
+.badge i {
+  font-size: 12px;
+}
+
+.badge.success {
+  background: var(--success);
+}
+
+.badge.warning {
+  background: var(--warning);
+}
+
+.badge.danger {
+  background: var(--danger);
+}
