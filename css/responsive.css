@@ -101,3 +101,19 @@
     width: 100%;
   }
 }
+
+@media (max-width: 768px) {
+  #projectForm {
+    grid-template-columns: 1fr;
+  }
+
+  #projectForm button {
+    grid-column: 1;
+  }
+
+  .modal-content {
+    width: 95%;
+
+    padding: 25px;
+  }
+}

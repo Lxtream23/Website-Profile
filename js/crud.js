@@ -153,6 +153,7 @@ form.addEventListener("submit", (e) => {
   renderTable();
 
   form.reset();
+  document.getElementById("projectModal").classList.remove("show");
 });
 
 // =====================================
@@ -170,6 +171,7 @@ function editProject(index) {
   document.getElementById("status").value = project.status;
 
   document.getElementById("nama").focus();
+  document.getElementById("projectModal").classList.add("show");
 }
 
 // =====================================
