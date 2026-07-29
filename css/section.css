@@ -147,3 +147,89 @@ footer p {
 
   opacity: 0.9;
 }
+
+/* ===================================
+   CONTACT
+=================================== */
+
+.contact-wrapper {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 40px;
+
+  align-items: center;
+}
+
+.contact-info h3 {
+  color: var(--primary);
+
+  margin-bottom: 15px;
+
+  font-size: 30px;
+}
+
+.contact-info p {
+  color: var(--text-light);
+
+  margin-bottom: 25px;
+}
+
+.info-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 18px;
+}
+
+.info-item i {
+  width: 45px;
+
+  height: 45px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  color: white;
+}
+
+#contactForm {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+#contactForm input,
+#contactForm textarea {
+  padding: 15px;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-md);
+
+  outline: none;
+
+  transition: var(--transition);
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+  border-color: var(--secondary);
+}
+
+#contactForm textarea {
+  resize: none;
+}
