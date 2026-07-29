@@ -4,27 +4,9 @@
 // =====================================
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ==========================
-  // Theme
-  // ==========================
+  initTheme();
 
-  if (typeof initTheme === "function") {
-    initTheme();
-  }
+  loadDashboard();
 
-  // ==========================
-  // Dashboard (khusus index)
-  // ==========================
-
-  if (typeof loadDashboard === "function") {
-    loadDashboard();
-  }
-
-  // ==========================
-  // Chart (khusus index)
-  // ==========================
-
-  if (typeof loadChart === "function") {
-    loadChart();
-  }
+  initScrollProgress();
 });

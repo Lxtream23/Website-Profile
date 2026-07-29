@@ -164,3 +164,31 @@ TOAST NOTIFICATION
     transform: scale(1);
   }
 }
+
+/* ===================================
+   SCROLL PROGRESS
+=================================== */
+
+.scroll-progress {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 5px;
+
+  background: transparent;
+
+  z-index: 99999;
+}
+
+#progressBar {
+  width: 0%;
+
+  height: 100%;
+
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+
+  transition: width 0.15s linear;
+}
